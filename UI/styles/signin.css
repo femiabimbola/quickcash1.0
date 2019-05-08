@@ -1,0 +1,154 @@
+
+body{
+    background-color: #E0F2F1;
+    text-align: center;
+    font-family: "Open Sans";
+    color:white;
+    margin: 0%;
+    padding: 0%;
+    }
+    
+    .header {
+     height: 90px;
+      width: 100%;
+     background-color: #012b3d;
+    }
+    
+    .wrapper {
+     background-color: #012b3d;
+     height: 520px;
+     width: 400px;
+     border-radius: 15px;
+     margin: 50px auto;
+     box-shadow: 0 14px 28px #264653;
+    }
+    
+    .head{
+      padding: 15px;
+      display: inline-block;
+    }
+    
+    .credit{
+      color: #ffffff;
+    font-size: 30px;
+    }
+    
+    .sign-in{
+      margin-top:60px;
+      margin-bottom: 40px;
+      display: inline-block;
+      }
+    
+      .sign-in a {
+    
+        padding: 15px 30px;
+        margin: 35px auto;
+        font-size: 15px;
+        font-weight: 200px; 
+        background-color: #2BBBAD;
+        display: inline;
+        color: #ffffff;
+        border-radius: 5px;
+        text-decoration: none;
+      }
+    
+      .sign-in a:hover {
+        background: #05435b;
+      }
+    
+    .input-container {
+      display: flex;
+      width: 85%;
+      margin-top: 15px;
+      margin-bottom: 32px;
+      padding: 0px 20px 5px 30px;
+      border-radius: 12px;
+    }
+    
+    .icon {
+      padding: 15px 10px;
+      background: #2BBBAD;
+      color: white;
+      min-width: 50px;
+      text-align: center;
+    }
+     
+    .input-field {
+      width: 100%;
+      padding: 15px;
+      outline: none;
+    }
+     
+    .input-field:focus {
+      border: 2px solid #2BBBAD;
+    }
+
+    .input-box {
+        margin-top: -20px;
+    }
+
+    .remember_me{
+        font-weight: 200px;
+    }
+    
+    .btn {
+      background-color: #2BBBAD;
+      color: white;
+      font-size: 15px;
+      padding: 15px 20px;
+      border: none;
+      margin: 12px 40px;
+      border-radius: 5px;
+      width: 80%;
+      cursor: pointer;
+    }
+    
+    .btn:hover {
+    background: #05435b;
+    }
+     
+    #form-end{
+      margin-top: 0px;
+    }
+
+    #form-end > p {
+      margin-top: -10px;
+    }
+
+    #form-end > p > a {
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: 200px;
+      font-size: 14px;
+    }
+    
+    .logout button {
+        background-color: #2BBBAD;
+        border: none;
+        margin: 10px auto;
+        padding: 15px 30px;
+        cursor: pointer;
+        color: #ffffff;
+        border-radius: 5px;
+        width: 80%;
+        }
+        
+    .logout button:hover {
+            background: #05435b;
+    }
+    
+    .foot {
+      background-color:#012b3d;
+      height: 80px;
+      clear:both; 
+    }
+    
+     .foot > p {
+       font-size: 14px;
+       font-weight: 300px;
+     }
+     
+     .foot > p.res {
+       padding-top: 20px;
+     }
+    
