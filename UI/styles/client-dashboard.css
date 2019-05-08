@@ -1,0 +1,117 @@
+*{
+  margin: 0px;
+  padding:0px;
+}
+
+
+html, body{
+    background-color: #E0F2F1;
+    text-align: center;
+    font-family: "Open Sans";
+    color:#ffffff;
+    display: grid;
+    grid-template-columns: 1fr;
+    }
+    
+    
+    .header {
+        height: 90px;
+        width: 100%;
+        background-color: #012b3d;
+    }
+
+    .head{
+        padding: 15px;
+        display: inline-block;
+      }
+
+      .credit{
+        color: #ffffff;
+      font-size: 30px;
+      }
+    
+      .main-body {
+        display: grid;
+        grid-column-gap: 12px;
+        grid-template-columns: 1fr 4fr;
+      }
+
+
+     .nav {
+        padding: 40px  15px 20px;
+        background-color: #056b6b;
+        min-height: 400px; 
+    }
+
+    .list {
+      text-decoration: none;
+      display: block;
+      font-size: 16px;
+      color: #056b6b;
+      align-content: center;
+      margin: 35px 8px;
+      padding: 10px 18px;
+      background-color: #ffffff;
+      border-radius: 5px; 
+      font-style: bold;
+    }
+    
+    .list:hover {
+     color: #ffffff;
+     background-color: #023535;
+    }
+
+    .active {
+     color: #ffffff;
+     background-color: #023535;
+    }
+
+    .content {
+      color:black;
+      background-color: #ffffff;
+      align-items: center;
+      overflow: hidden;
+      margin-right: 12px;
+    }
+
+    .content-head  {
+      height: 50px;
+      background-color: #056b6b;
+      align-items: center;
+      border-radius: 5px;
+      margin: 20px 65px;
+      color: #ffffff;
+      font-size: 24px;
+      
+    }
+
+    @media screen and (max-width: 600px) {
+
+      .content-head p {
+        font-size: 14px;
+      }
+      .list {
+        font-size: 13px;
+        padding: 8px 8px;
+      }
+    }
+
+    .content-head p {
+      padding-top: 10px;
+     
+    }
+
+    .foot {
+        background-color:#012b3d;
+        height: 95px;
+        bottom:0;
+      }
+      
+    .foot > p {
+         font-size: 14px;
+         font-weight: 300px;
+       }
+       
+    .foot > p.res {
+         padding-top: 20px;
+       }
