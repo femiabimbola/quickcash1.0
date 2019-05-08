@@ -1,2 +1,0 @@
-/* No javascript used for the 
-template  */
