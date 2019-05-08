@@ -8,7 +8,7 @@ income earners.
 
 ### Technology Engaged
 >- Front-End: HTML, CSS, JAVASCRIPT
->- Back-End: Node.js, MySQL,
+>- Back-End: Node.js, express,
 
 ### Folder Structure
->- `UI`: contains the UI design with HTML/CSS/BOOTSTRAP
+>- `UI`: contains the UI design with HTML/CSS/
