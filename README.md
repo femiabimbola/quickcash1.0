@@ -11,4 +11,4 @@ income earners.
 >- Back-End: Node.js, MySQL,
 
 ### Folder Structure
->- `template`: contains the UI design with HTML/CSS/BOOTSTRAP
+>- `UI`: contains the UI design with HTML/CSS/BOOTSTRAP
