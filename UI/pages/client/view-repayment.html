@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="../../css/client-dashboard.css">
+    <link rel="stylesheet" type="text/css" href="../../styles/viewloanPayment.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title> Quick Credit | Repayment </title>
   </head>
     <body>
-        <script src="/js/javs.js"></script>
+        
 
             <div class = "header" > 
                 <div class = "head">
@@ -25,20 +25,16 @@
 
                
 
-          	    <div> 
-          	    	 <a href="client-dashboard.html" class = "list" > My dashboard </a>
-          	    </div>
-
           	  <div>
-          	   	 <a href="apply-forLoan.html" class = "list" > Apply for Loan </a>
+          	   	 <a href="apply-forLoan.html" class = "list" > <i class="fa fa-suitcase icon "></i>Apply for Loan </a>
           	  </div>
 
           	  <div>
-          		  <a href="view-repayment.html" class = "list active" > View Loan Repayment </a>
+          		  <a href="view-repayment.html" class = "list active" ><i class="fa fa-eye icon"></i> View Loan Repayment </a>
           	  </div>
               
               <div>
-                <a href="../../index.html" class = "list" > Sign Out </a>
+                <a href="../../index.html" class = "list" > <i class="fa fa-sign-out icon"></i> Sign Out </a>
               </div>
               
             </div> <!--end of content-->
@@ -48,14 +44,37 @@
                 <p> View Loan Repayment  </p>
               </div>
 
+                <table class = table>
+              <thead>
+                <tr>
+                  <th>Month</th>
+                  <th>Monthly Installments </th>
+                  <th>Due Date</th>
+                  <th>Payment Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>May</td>
+                  <td>3,000</td>
+                  <td>2019/02/01</td>
+                  <td>Paid</td>
+                </tr>
 
-              <p><b>Name:</b> Michael Smith   </p>
-              <p><b>Name:</b> Femi Abimbola    </p>
-              <p><b>Name:</b> Femi Abimbola    </p>
-              <p><b>Name:</b> Femi Abimbola    </p>
-              <p><b>Name:</b> Femi Abimbola    </p>
-              <p><b>Name:</b> Femi Abimbola    </p>
-              <p><b>Name:</b> Femi Abimbola    </p>
+                <tr>
+                  <td>June</td>
+                  <td>3,000</td>
+                  <td>2019/03/01</td>
+                  <td>Paid</td>
+                </tr>
+                <tr>
+                  <td>July</td>
+                  <td>3,000</td>
+                  <td>2019/04/01</td>
+                  <td>Paid</td>
+                </tr>
+              </tbody>
+            </table>
 
             </div>
           </div>

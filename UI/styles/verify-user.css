@@ -1,0 +1,129 @@
+*{
+  margin: 0px;
+  padding:0px;
+}
+
+
+html, body{
+    background-color: #E0F2F1;
+    text-align: center;
+    font-family: "Open Sans";
+    color:#ffffff;
+    display: grid;
+    grid-template-columns: 1fr;
+    }
+    
+    
+    .header {
+        height: 90px;
+        width: 100%;
+        background-color: #012b3d;
+    }
+
+    .head{
+        padding: 15px;
+        display: inline-block;
+      }
+
+      .credit{
+        color: #ffffff;
+      font-size: 30px;
+      }
+    
+      .main-body {
+        display: grid;
+        grid-column-gap: 5px;
+        grid-template-columns: 1.2fr 4fr;
+        margin: 0px 0px;
+      }
+
+
+     .nav {
+        padding: 40px  0px 20px;
+        background-color: #056b6b;
+        min-height: 400px; 
+        overflow: hidden;
+        text-align: left;
+    }
+
+    .list {
+      text-decoration: none;
+      display: block;
+      font-size: 14px;
+      color: #ffffff;
+      margin: 20px 0px;
+      padding: 20px 9px;
+      background-color: #023535;
+      font-style: bold;
+      width: 100%;
+    }
+    
+    @media only screen and (min-device-width: 414px) and (max-device-height: 896px) {
+      
+      }
+
+
+    .list:hover {
+     color: #ffffff;
+     background-color: #023535;
+    }
+
+    .active {
+     color: #056b6b;
+     background-color: #ffffff;
+    }
+
+    .icon { 
+    padding: 0px 14px;
+     }
+
+    .content {
+
+      align-items: center;
+      overflow: hidden;
+      margin-right: 12px;
+      display: grid;
+      grid-template-areas: 
+      'content-head content-head content-head content-head content-head content-head'
+      '. left-button left-button right-button right-button .'
+      '. left2-button left2-button right2-button right2-button .'
+    }
+
+    .content-head  {
+      margin-top: -170px;
+      height: 40px;
+      background-color: #023535;
+      padding: 12px 12px;
+      align-items: center;
+      color: #ffffff;
+      font-size: 22px;
+      grid-area: content-head;
+    }
+
+   
+    @media screen and (max-width: 480px) {
+
+      .content-head p {
+        font-size: 14px;
+      }
+      .list {
+        font-size: 13px;
+        padding: 8px 8px;
+      }
+    }
+
+
+    .foot {
+        background-color:#012b3d;
+        height: 95px;
+        bottom:0;
+      }
+      
+    .foot > p {
+         font-size: 14px;
+         font-weight: 300px;
+       }
+       
+    .foot > p.res {
+         padding-top: 20px;
+       }

@@ -1,0 +1,81 @@
+body{
+	background-color: #E0F2F1;
+	text-align: center;
+	font-family: "Open Sans";
+	color:white;
+	margin: 0%;
+	padding: 0%;
+}
+
+.header{
+height: 90px;
+width: 100%;
+background-color: #012b3d;
+}
+
+.head{
+  padding: 15px;
+  display: inline-block;
+}
+
+.first{	
+ margin-top: -18px;
+ background-repeat: no-repeat;
+ background-position: center top;
+ background-size: 100% 100%;
+ min-height: 480px;
+ background-image:linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
+ url('../asset/quickcash.jpg'); 
+ height: 80vh;
+}
+
+@media only screen and (max-width: 600px) {
+  .first {height: 350px;}
+}
+
+.first-1 {
+	font-size: 60px;
+	padding: 80px 50px 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .first-1 {font-size: 40px;
+  	padding: 80px 5px 15px;}
+}
+
+.sign-up {
+	padding: 50px 0px 60px;
+}
+
+.btn {
+  background-color: #012b3d;
+  color: white;
+  font-size: 15px;
+  padding: 20px 20px;
+  border: none;
+  margin: 12px 70px;
+  border-radius: 5px;
+  width: 170px;
+  border-width: 6px;
+  
+  cursor: pointer;
+}
+
+.btn:hover {
+background: #05435b;
+}
+
+.foot {
+  background-color:#012b3d;
+  height: 80px; 
+  margin-top: -15px;
+}
+
+ .foot > p {
+   font-size: 14px;
+   font-weight: 300
+ }
+ 
+ .foot > p.res {
+   padding-top: 20px;
+ }
