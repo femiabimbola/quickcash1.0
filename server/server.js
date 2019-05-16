@@ -1,9 +1,8 @@
 import express from 'express';
 import morgan from 'morgan';
 import parser from 'body-parser';
-import users from './routes/users';
-import loans from './routes/loan';
-import repayment from './routes/Repayment';
+import routes from './routes/index';
+import repaymentRouter from './routes/Repayment';
 
 
 const app = express();
@@ -15,9 +14,9 @@ app.use(parser.urlencoded({ extended: true }));
 
 // API ROUTES
 
-app.use('/api/v1/auth', users);
-app.use('/api/v1', loans);
-app.use('/api/v1/', repayment);
+app.use('/api/v1', routes.userRouter);
+app.use('/api/v1', routes.loanRouter);
+app.use('/api/v1', repaymentRouter);
 
 // To get to your home root server
 app.use('/', (req, res) => {
@@ -26,7 +25,7 @@ app.use('/', (req, res) => {
   });
 });
 
-const port = process.env.PORT || 6006;
+const port = process.env.PORT || 6008;
 
 app.listen(port, () => {
   console.log('The port is listening');

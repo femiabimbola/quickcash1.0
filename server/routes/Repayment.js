@@ -1,13 +1,14 @@
 import express from 'express';
 import repaymentController from '../controllers/repayment';
+import Authorization from '../middlewares/verifer';
 
-const router = express.Router();
+const repaymentRouter = express.Router();
 
 // to post repayment
-router.post('/loans/:id/repayment', repaymentController.postRepayment);
+repaymentRouter.post('/loans/:id/repayment', Authorization.verifyAdmin, repaymentController.postRepayment); //
 
 // to get repayment History
-router.get('/loans/:id/repayment', repaymentController.getRepaymentHistory);
+repaymentRouter.get('/loans/:id/repayment', Authorization.verifyUser, repaymentController.getRepaymentHistory);
 
 
-module.exports = router;
+export default repaymentRouter;

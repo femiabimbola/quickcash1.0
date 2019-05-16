@@ -1,19 +1,18 @@
 import express from 'express';
 import loanController from '../controllers/loans';
+import Authorization from '../middlewares/verifer'
 
-const router = express.Router();
+const loanRouter = express.Router();
 
 // To create a loan
-router.post('/loans/', loanController.loanCreation);
+loanRouter.post('/loans', Authorization.verifyUser, loanController.loanCreation);
 
 // Get all loans application
-router.get('/loans?status=approved&repaid=false', loanController.getAllLoans);
+loanRouter.get('/loans?status=approved&repaid=false', Authorization.verifyAdmin, loanController.getAllLoans);
 
-router.get('/loan', loanController.getAllLoans);
-// Get a loan application
-router.get('/loans/:id', loanController.getAloan);
 
-// To approve a loan
-// router.patch('/loans/:1d', loanController.approveLoan);
+// Get a specific loan application
+loanRouter.get('/loans/:id', Authorization.verifyAdmin, loanController.getAloan);
 
-module.exports = router;
+
+module.exports = loanRouter;

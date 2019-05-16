@@ -1,17 +1,24 @@
 import express from 'express';
 import userController from '../controllers/users';
+import Validator from '../middlewares/Validator';
+import Auth from '../middlewares/expressvalid';
 
 
-const router = express.Router();
+const userRouter = express.Router();
+// const { validSignup } = Auth;
 
 // user sign up route
-router.post('/signup', userController.generateUser);
+// userRouter.post('/users/auth/signup', userController.generateUser); //
 
 // user can sign up route
-router.post('/signin', userController.loginUser);
+// userRouter.post('/users/auth/signin', userController.loginUser);
 
 // admin to verify user route
-router.post('/email/verify', userController.verifyUser);
+userRouter.post('/email/verify', userController.verifyUser); //
 
 
-module.exports = router;
+userRouter.post('/users/auth/signup', Auth.validSignup, userController.generateUser);
+
+userRouter.post('/users/auth/signin', Validator.validateLogin, userController.loginUser);
+
+export default userRouter;

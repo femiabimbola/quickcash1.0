@@ -7,53 +7,34 @@ class repaymentController {
   static postRepayment(req, res) {
     const id = parseFloat(req.params.id, 10);
     const loanApplied = loan.find(loans => loans.id === id);
-    const amountPaid = parseFloat(req.body.paidAmount);
     if (loanApplied) {
-      if (loanApplied.status !== 'approved') {
+      if (loanApplied.status !== 'accepted') {
         return res.status(400).send({
           status: 400,
           error: 'This loan is yet to be appproved',
         });
       }
-      if (amountPaid > loanApplied.balance) {
-        return res.status(400).send({
-          status: 400,
-          error: 'You have am outstanding loan',
-        });
-      }
-      if (amountPaid <= loanApplied.balance) {
-        loanApplied.balance -= amountPaid;
-        const {
-          createdOn, amount, balance, paymentInstallment,
-        } = loanApplied;
-        const newData = {
-          id,
-          amount,
-          createdOn,
-          balance,
-          paymentInstallment,
-          loanId: loanApplied,
-          amountPaid,
-        };
-        if (loanApplied.balance === 0) {
-          loanApplied.repaid = true;
-          return res.status(200).send({
-            status: 200,
-            message: 'loan is fully repaid',
-          });
-        }
-        repayment.push(newData);
-        return res.status(200).send({
-          status: 200,
-          data: newData,
-        });
-      }
     }
-    return res.status(404).send({
-      status: 404,
-      error: 'No loan found',
+    if (loanApplied.balance === 0 || loanApplied.repaid === true) {
+      return res.status(200).send({
+        status: 200,
+        message: 'loan is fully repaid, you may ask for another loan',
+      });
+    }
+
+    const newData = {
+      id: repayment.length + 1,
+      createdOn: Date(),
+      loanId: loanApplied.id,
+      amount: loanApplied.amount,
+    };
+    repayment.push(newData);
+    return res.status(200).send({
+      status: 200,
+      data: newData,
     });
   }
+
 
   static getRepaymentHistory(req, res) {
     const { id } = req.params;

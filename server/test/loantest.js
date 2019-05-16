@@ -4,111 +4,133 @@ import chaiHttp from 'chai-Http';
 import server from '../server';
 
 chai.should();
-chai.use(chaiHttp); // from import
+chai.use(chaiHttp); //
+
+const wrongToken = 'd0NtBedEcE1vEdtH15T0kEn1s1NvAlId';
+let Token = '';
 
 // The test to ask for a loan
-const loginUrl = '/api/v1/auth/siginin';
-const loanurl = '/api/v1/loans';
-
-let userToken;
-
-describe('Test user loan application', () => {
-  describe('POST/loans', () => {
-    const theuser = {
-      email: 'jimiagbaje@mail.com',
-      password: 'jimipassword',
-    };
-    before((done) => {
-      chai.request(server)
-        .post(`${loginUrl}`)
-        .send(theuser)
-        .end((err, res) => {
-          userToken = `Owner ${res.body.data.taken}`;
-          done();
-        });
-    });
-    it('shoud create a user loan', (done) => {
-      const userLoan = {
-        firstName: 'Jimi',
-        lastName: 'agbaje',
-        email: 'jimiagbaje@mail.com',
-        amount: 30500,
-        tenor: 8,
-      };
-      chai.request(server)
-        .post(`${loanurl}`)
-        .set('authorization', userToken)
-        .send(userLoan)
-        .end((err, res) => {
-          res.body.should.be.a('object');
-          res.should.have.status(201);
-          res.body.should.have.property('data');
-          done();
-        });
-    });
-    it('should show error if user is not authenticated',
-      (done) => {
-        const userLoan = {
-          firstName: 'Jimi',
-          lastName: 'agbaje',
-          email: 'jimiagbaje@mail.com',
-          amount: 30500,
-          tenor: 8,
-        };
-
-        chai.request(server)
-          .post(`${loanurl}`)
-          .set('authorization', userToken)
-          .send(userLoan)
-          .end((err, res) => {
-            res.should.have.status(400);
-            res.body.should.be.an('object');
-            res.body.should.have.property('error');
-            done();
-          });
+describe('a loan test', () => {
+  const Loan = {
+    tenor: '9',
+    amount: '2000.00',
+    purpose: 'Trip',
+    startDate: new Date(),
+  };
+  it('should fail if user is not logged in', (done) => {
+    chai.request(server)
+      .post('/api/v1/loans')
+      .send(Loan)
+      .end((err, res) => {
+        res.body.should.have.status(401);
+        res.body.should.be.a('object');
+        res.body.should.have.property('error');
+        res.body.error.should.be.a('string');
+        res.body.error.should.eql('Auth failed');
+        done();
       });
-
-    it('should give error if lastName is less than 3 characters', (done) => {
-      const userLoan = {
-        lastName: 'ji',
-        firstName: 'agbaje',
-        email: 'jimiagbaje@mail.com',
-        amount: 30500,
-        tenor: 8,
-      };
-      chai.request(server)
-        .post(`${loanurl}`)
-        .set('authorization', userToken)
-        .send(userLoan)
-        .end((err, res) => {
-          res.should.have.status(400);
-          res.body.should.be.an('object');
-          res.body.should.have.property('error');
-          done();
-        });
-    });
-
-    it('should give error if lastName is not a string', (done) => {
-      const userLoan = {
-        lastName: 456,
-        firstName: 'agbaje',
-        email: 'jimiagbaje@mail.com',
-        amount: 30500,
-        tenor: 8,
-      };
-      chai.request(server)
-        .post(`${loanurl}`)
-        .set('authorization', userToken)
-        .send(userLoan)
-        .end((err, res) => {
-          res.should.have.status(400);
-          res.body.should.be.an('object');
-          res.body.should.have.property('error');
-          done();
-        });
-    });
   });
 
-  describe('')
+  it('should fail if user token is invalid', (done) => {
+    chai.request(server)
+      .post('/api/v1/loans')
+      .set('authorization', `Bearer ${wrongToken}`)
+      .send(Loan)
+      .end((err, res) => {
+        res.body.should.have.status(403);
+        res.body.should.be.a('object');
+        res.body.should.have.property('error');
+        res.body.error.should.be.a('string');
+        res.body.error.should.eql('Invalid token, You need to login or signup');
+        done();
+      });
+  });
+
+  describe('Logged in user create loan test', () => {
+    before((done) => {
+      chai.request(server)
+        .post('/api/v1/users/auth/login')
+        .send(userCredentials)
+        .end((error, response) => {
+          userToken = response.body.data.token;
+          done();
+        });
+    });
+    it('should fail if user already has an UNPAID load running', (done) => {
+      chai.request(server)
+        .post('/api/v1/loans')
+        .set('authorization', `Bearer ${Token}`)
+        .send(Loan)
+        .end((err, res) => {
+          res.body.should.have.status(409);
+          res.body.should.be.a('object');
+          res.body.should.have.property('error');
+          res.body.error.should.be.a('string').eql('You have an existing loan');
+          done();
+        });
+     });
+
+    it('if a user is logged in and token is valid, do not create loan if tenor is empty', (done) => {
+      validLoan.tenor = '';
+      chai.request(server)
+        .post('/api/v1/loans')
+        .set('authorization', `Bearer ${Token}`)
+        .send(Loan)
+        .end((err, res) => {
+          res.body.should.have.status(400);
+          res.body.should.be.a('object');
+          res.body.error.should.be.a('string');
+          res.body.error.should.eql('Loan tenor is required');
+          done();
+        });
+     });
+     it(' should NOT create Loan if tenor is greater than 12', (done) => {
+      validLoan.tenor = '13';
+      chai.request(server)
+        .post('/api/v1/loans')
+        .set('authorization', `Bearer ${Token}`)
+        .send(Loan)
+        .end((err, res) => {
+          res.body.should.have.status(400);
+          res.body.should.be.a('object');
+          res.body.error.should.be.a('string');
+          res.body.error.should.eql('Loan tenor should be between 1 and 12');
+          done();
+        });
+      });
+      it('it should NOT create Loan if AMOUNT IS INVALID', (done) => {
+      validLoan.tenor = '8';
+      validLoan.amount = '@5s7.977';
+      chai.request(server)
+        .post('/api/v1/loans')
+        .set('authorization', `Bearer ${Token}`)
+        .send(Loan)
+        .end((err, res) => {
+          res.body.should.have.status(400);
+          res.body.should.be.a('object');
+          res.body.error.should.be.a('string');
+          res.body.error.should.eql('Valid Loan amount is required');
+          done();
+        });
+       });
+      
+      describe('Admin Approves Loan Test', () => {
+     before((done) => {
+     chai.request(server)
+      .post('/api/v1/users/auth/login')
+      .send(adminCredentials)
+      .end((error, response) => {
+        adminToken = response.body.data.token;
+        response.body.should.have.status(200);
+        response.body.should.be.a('object');
+        response.body.data.should.have.property('token');
+        response.body.data.should.have.property('isAdmin');
+        response.body.data.isAdmin.should.eql(true);
+        done();
+      });
+  });
+
+
+
 
 });
