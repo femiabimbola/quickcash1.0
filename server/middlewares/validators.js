@@ -15,7 +15,7 @@ export const validator = {
           error: { message: 'email cannot be empty' },
         });
     }
-    if (!req.body.username || req.body.username.trim() === '') {
+    if (!req.body.firstName || req.body.firstName.trim() === '') {
       return res.status(400)
         .send({
           error: { message: 'username cannot be empty' },
@@ -29,7 +29,7 @@ export const validator = {
         });
     }
 
-    if (req.body.username.length < 6) {
+    if (req.body.firstName.length < 6) {
       return res.status(400)
         .send({
           error: {
@@ -47,19 +47,19 @@ export const validator = {
         });
     }
 
-    if (!req.body.fullName || req.body.fullName.trim() === '') {
-      return res.status(400)
-        .send({
-          error: { message: 'fullName not provided' },
-        });
-    }
+    // if (!req.body.fullName || req.body.fullName.trim() === '') {
+    //   return res.status(400)
+    //     .send({
+    //       error: { message: 'fullName not provided' },
+    //     });
+    // }
 
-    if (!req.body.phoneNumber || req.body.phoneNumber.trim() === '') {
-      return res.status(400)
-        .send({
-          error: { message: 'phone cannot be empty' },
-        });
-    }
+    // if (!req.body.phoneNumber || req.body.phoneNumber.trim() === '') {
+    //   return res.status(400)
+    //     .send({
+    //       error: { message: 'phone cannot be empty' },
+    //     });
+    // }
     return next();
   },
 
@@ -73,7 +73,7 @@ export const validator = {
      * @return {void}
      */
   signIn(req, res, next) {
-    if (!req.body.username || req.body.username.trim() === '') {
+    if (!req.body.firsname || req.body.firstName.trim() === '') {
       return res.status(400)
         .send({
           error: { message: 'Username is required' },
@@ -85,11 +85,11 @@ export const validator = {
           error: { message: 'Password is required' },
         });
     }
-    if (req.body.username.length < 6) {
+    if (req.body.firstName.length < 3) {
       return res.status(400)
         .send({
           error: {
-            message: 'Please provide a username with atleast 6 characters.',
+            message: 'Please provide a firstName with atleast 3 characters.',
           },
         });
     }
