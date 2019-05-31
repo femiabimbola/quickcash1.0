@@ -37,17 +37,6 @@ html, body{
         margin: 0px 0px;
       }
 
-      .verify {
-        text-decoration: none;
-        display: block;
-        font-size: 16px;
-        color: #ffffff;
-        margin: 0px 0px;
-        padding: 20px 9px;
-       background-color: #06a5a5;
-        font-style: bold;
-        width: 90%;
-      }
 
      .nav {
         padding: 40px  0px 20px;
@@ -121,6 +110,18 @@ html, body{
       overflow: hidden;
       }
 
+      .verify {
+        text-decoration: none;
+        display: block;
+        font-size: 16px;
+        color: #ffffff;
+        margin: 0px 0px;
+        padding: 20px 9px;
+       background-color: #06a5a5;
+        font-style: bold;
+        width: 90%;
+      }
+
       .input-container {
         display: flex;
         width: 90%;
@@ -129,8 +130,6 @@ html, body{
        padding: 7px 20px 5px 30px;
         border-radius: 12px;
         }
-        
-        
   
   
         .input-field {
