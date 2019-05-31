@@ -4,8 +4,14 @@ const repayment = [
     createdOn: Date(),
     loanId: 9,
     amount: 23200.00,
-    paidAmount: 15000.00,
-    balance: 13200.00,
+  },
+
+  {
+    id: 1,
+    createdOn: Date(),
+    loanId: 4,
+    amount: 23200.00,
+
   },
 ];
 
